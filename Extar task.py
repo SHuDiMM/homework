@@ -12,3 +12,4 @@ name_grade = []
 for n in result: name_grade.append(n)
 final_dict = dict(name_grade)
 print(final_dict)
+n=int(input())
