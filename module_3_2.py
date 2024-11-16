@@ -1,19 +1,13 @@
+import re
+
+
 def send_email(message, recipient, *, sender='university.help@gmail.com'):
-    if sender.find('@') == -1 or recipient.find('@') == -1:
-        print(f"Невозможно отправить письмо с адреса {sender} на адрес {recipient}")
+    pattern = r'^[\w\.-]+@[\w\.-]+\.(com|ru|net)$'
 
-    a = ['.com', '.net', '.ru']
-    b = [recipient, sender]
-    is_contains = 0
-    for i in b:
-        for j in a:
-            if i.find(j) == len(i) - len(j):
-                is_contains += 1
-            else:
-                continue
-
-    if is_contains < 2:
+    if not re.match(pattern, sender) or not re.match(pattern, recipient):
         print(f"Невозможно отправить письмо с адреса {sender} на адрес {recipient}")
+        return
+
     elif recipient == sender:
         print('Нельзя отправить письмо самому себе!')
 
